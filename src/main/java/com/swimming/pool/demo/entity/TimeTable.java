@@ -7,7 +7,7 @@ import java.util.List;
 // класс содержит информацию по дате и количество человек зарегистрированных в это время
 @Entity
 @Table(name = "date_table")
-public class DateReg {
+public class TimeTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -24,7 +24,7 @@ public class DateReg {
     inverseJoinColumns = @JoinColumn(name = "client_id"))
     private List<Client> clientList;
 
-    public DateReg() {
+    public TimeTable() {
     }
 
     public int getId() {

@@ -28,9 +28,9 @@ public class Client {
     // создаём связь с датами
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "client_date",
-            joinColumns = @JoinColumn(name = "date_id"),
-            inverseJoinColumns = @JoinColumn(name = "client_id"))
-    private List<DateReg> dateList;
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "date_id"))
+    private List<TimeTable> dateList;
 
     public Client() {
     }
@@ -67,11 +67,11 @@ public class Client {
         this.email = email;
     }
 
-    public List<DateReg> getDateList() {
+    public List<TimeTable> getDateList() {
         return dateList;
     }
 
-    public void setDateList(List<DateReg> dateList) {
+    public void setDateList(List<TimeTable> dateList) {
         this.dateList = dateList;
     }
 

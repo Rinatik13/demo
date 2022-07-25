@@ -1,10 +1,10 @@
 package com.swimming.pool.demo.factory;
 
-import com.swimming.pool.demo.entity.DateReg;
+import com.swimming.pool.demo.entity.TimeTable;
 
 public class FactoryDate {
-    public static DateReg create(String time){
-        DateReg date = new DateReg();
+    public static TimeTable create(String time){
+        TimeTable date = new TimeTable();
         date.setTime(time);
         date.setCount((byte) 0);
         return date;

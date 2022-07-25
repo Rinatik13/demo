@@ -1,4 +1,4 @@
-package com.swimming.pool.demo.service;
+package com.swimming.pool.demo.service.client;
 
 import com.swimming.pool.demo.entity.Client;
 
@@ -8,4 +8,8 @@ public interface ClientService {
     public List<Client> getAllClients();
 
     public void saveClient(Client client);
+
+    public Client getClient(int id);
+
+    public void deleteClient(int id);
 }

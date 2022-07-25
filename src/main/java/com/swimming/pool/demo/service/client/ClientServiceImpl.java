@@ -1,6 +1,6 @@
-package com.swimming.pool.demo.service;
+package com.swimming.pool.demo.service.client;
 
-import com.swimming.pool.demo.dao.ClientDaO;
+import com.swimming.pool.demo.dao.client.ClientDaO;
 import com.swimming.pool.demo.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +24,17 @@ public class ClientServiceImpl implements ClientService{
     @Transactional
     public void saveClient(Client client) {
         clientDaO.saveClient(client);
+    }
+
+    @Override
+    @Transactional
+    public Client getClient(int id) {
+        return clientDaO.getClient(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteClient(int id) {
+        clientDaO.delete(id);
     }
 }
