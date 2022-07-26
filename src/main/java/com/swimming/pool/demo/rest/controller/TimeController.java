@@ -29,10 +29,7 @@ public class TimeController {
     @GetMapping("/all")
     public List<TimeTable> showAllTimeTable() {
         List<TimeTable> allTimeTable = timeTableService.getAllDateReg();
-//        List<TimeTable> result = new ArrayList<>();
-//        for (TimeTable t: allTimeTable){
-//            t.setId(null);
-//        }
+
         return allTimeTable;
     }
 
@@ -59,7 +56,7 @@ public class TimeController {
                 timeTableService.saveDateReg(timeTable);
                 reserveService.reserve(reserve);
                 Order order = new Order();
-                order.setOrderId(reserve.getOrderId());
+                order.setOrderId(reserve.getOrderId()+ "");
                 return order;
             }
         }
@@ -85,21 +82,29 @@ public class TimeController {
 
     @RequestMapping("/")
     public void create() {
-
-        Calendar calendar = new GregorianCalendar();
-        calendar.set(Calendar.DAY_OF_YEAR, 1);
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy.MM.dd.HH");
-        if (timeTableService.getAllDateReg().size() != (30 * 8)) {
-            for (int i = 1; i < 31; i++) {
-                TimeTable tb = new TimeTable();
-                calendar.set(Calendar.DATE, i);
-                for (int a = 8; a < 17; a++) {
-                    calendar.set(calendar.HOUR, a);
-                    tb.setTime(sf.format(calendar.getTime()));
+        if (timeTableService.getAllDateReg().size()<1){
+        Calendar cal = new GregorianCalendar();
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy.MM.dd");
+        for (int i = 0; i < 30; i++) {
+            cal.add(Calendar.DAY_OF_WEEK, 1);
+            if (cal.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY) {
+                i--;
+            } else if (cal.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY) {
+                i--;
+            }
+            else
+            {
+                String result = sf.format(cal.getTime());
+                for (int a = 8; a < 21; a++) {
+                    String res = result + "." + a;
+                    TimeTable tb = new TimeTable();
+                    tb.setTime(res);
                     tb.setCount(0);
                     timeTableService.saveDateReg(tb);
                 }
             }
         }
+
+    }
     }
 }

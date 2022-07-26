@@ -1,6 +1,5 @@
 package com.swimming.pool.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ public class Reserve {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String orderId;
+    private int orderId;
 
     @Column(name = "client_id")
     private int clientId;
@@ -24,11 +23,11 @@ public class Reserve {
     public Reserve() {
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
