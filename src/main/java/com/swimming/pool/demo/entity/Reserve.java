@@ -1,9 +1,13 @@
 package com.swimming.pool.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "reserve_table")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Reserve {
 
     @Id
@@ -14,6 +18,7 @@ public class Reserve {
     @Column(name = "client_id")
     private int clientId;
 
+    @Column(name = "datetime")
     private String datetime;
 
     public Reserve() {

@@ -1,11 +1,15 @@
 package com.swimming.pool.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.util.List;
 
 // POJO класс по клиенту
 @Entity
 @Table(name = "client_table")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Client {
     // ид клиента
     @Id
@@ -24,13 +28,6 @@ public class Client {
     // электронная почта клиента
     @Column (name = "email")
     private String email;
-
-    // создаём связь с датами
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "reserve_table",
-//            joinColumns = @JoinColumn(name = "client_id"),
-//            inverseJoinColumns = @JoinColumn(name = "date_time_id"))
-//    private List<TimeTable> dateList;
 
     public Client() {
     }
@@ -66,14 +63,6 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
-
-//    public List<TimeTable> getDateList() {
-//        return dateList;
-//    }
-//
-//    public void setDateList(List<TimeTable> dateList) {
-//        this.dateList = dateList;
-//    }
 
     @Override
     public String toString() {

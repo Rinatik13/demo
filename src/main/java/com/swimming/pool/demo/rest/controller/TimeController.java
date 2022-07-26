@@ -1,6 +1,7 @@
 package com.swimming.pool.demo.rest.controller;
 
 import com.swimming.pool.demo.entity.Client;
+import com.swimming.pool.demo.entity.Order;
 import com.swimming.pool.demo.entity.Reserve;
 import com.swimming.pool.demo.entity.TimeTable;
 import com.swimming.pool.demo.service.client.ClientService;
@@ -28,6 +29,10 @@ public class TimeController {
     @GetMapping("/all")
     public List<TimeTable> showAllTimeTable() {
         List<TimeTable> allTimeTable = timeTableService.getAllDateReg();
+//        List<TimeTable> result = new ArrayList<>();
+//        for (TimeTable t: allTimeTable){
+//            t.setId(null);
+//        }
         return allTimeTable;
     }
 
@@ -45,7 +50,7 @@ public class TimeController {
 
 
     @PostMapping("/reserve")
-    public Reserve reserve (@RequestBody Reserve reserve) {
+    public Order order (@RequestBody Reserve reserve) {
         Client client = clientService.getClient(reserve.getClientId());
         TimeTable timeTable = timeTableService.getTableService(reserve.getDatetime());
         if (timeTable.getCount()<10){
@@ -53,7 +58,9 @@ public class TimeController {
                 timeTable.setCount(timeTable.getCount()+1);
                 timeTableService.saveDateReg(timeTable);
                 reserveService.reserve(reserve);
-                return reserve;
+                Order order = new Order();
+                order.setOrderId(reserve.getOrderId());
+                return order;
             }
         }
      return null;
@@ -73,9 +80,7 @@ public class TimeController {
         timeTable.setCount(timeTable.getCount()-1);
         reserveService.cancel(reserve1);
         timeTableService.saveDateReg(timeTable);
-        System.out.println("done!");
         }
-        System.out.println("not done!");
     }
 
     @RequestMapping("/")

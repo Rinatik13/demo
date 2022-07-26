@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,15 @@ public class ClientController {
 
     @GetMapping("/all")
     public List<Client> showAllClient(){
-        return clientService.getAllClients();
+        List<Client> clientList = clientService.getAllClients();
+        List<Client> result = new ArrayList<>();
+        for (Client c: clientList){
+            c.setEmail(null);
+            c.setPhone(null);
+            result.add(c);
+        }
+        return result;
+
 
     }
 

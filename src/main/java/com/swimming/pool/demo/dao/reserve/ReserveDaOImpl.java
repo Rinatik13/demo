@@ -37,10 +37,19 @@ public class ReserveDaOImpl implements ReserveDaO{
         List<Reserve> reserveList = session.createQuery("from Reserve",
                 Reserve.class).getResultList();
         for (Reserve r:reserveList){
-            if (r.getOrderId().equals(reserve.getOrderId())){
+            if (r.getOrderId()==reserve.getOrderId()){
                 return r;
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Reserve> getAll() {
+        Session session = sessionFactory.getCurrentSession();
+        List<Reserve> reserveList = session.createQuery("from Reserve",
+                Reserve.class)
+                .getResultList();
+        return reserveList;
     }
 }
