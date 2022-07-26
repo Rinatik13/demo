@@ -18,11 +18,11 @@ public class TimeTable {
     private int count;
 
     // создаём связь с клиентом, список клиентов зарегистрированных на эту дату.
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "client_date",
-    joinColumns = @JoinColumn(name = "date_id"),
-    inverseJoinColumns = @JoinColumn(name = "client_id"))
-    private List<Client> clientList;
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinTable(name = "client_date",
+//    joinColumns = @JoinColumn(name = "date_id"),
+//    inverseJoinColumns = @JoinColumn(name = "client_id"))
+//    private List<Client> clientList;
 
     public TimeTable() {
     }
@@ -51,13 +51,13 @@ public class TimeTable {
         this.count = count;
     }
 
-    public List<Client> getClientList() {
-        return clientList;
-    }
-
-    public void setClientList(List<Client> clientList) {
-        this.clientList = clientList;
-    }
+//    public List<Client> getClientList() {
+//        return clientList;
+//    }
+//
+//    public void setClientList(List<Client> clientList) {
+//        this.clientList = clientList;
+//    }
 
     @Override
     public String toString() {

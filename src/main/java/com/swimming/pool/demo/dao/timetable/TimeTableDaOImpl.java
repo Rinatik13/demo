@@ -46,4 +46,18 @@ public class TimeTableDaOImpl implements TimeTableDaO {
         query.executeUpdate();
 
     }
+
+    @Override
+    public TimeTable getTime(String string) {
+        Session session = sessionFactory.getCurrentSession();
+        List<TimeTable> allDateReg = session.createQuery("from TimeTable",
+                        TimeTable.class)
+                .getResultList();
+        for (TimeTable t:allDateReg){
+            if (t.getTime().equals(string)){
+                return t;
+            }
+        }
+        return null;
+    }
 }

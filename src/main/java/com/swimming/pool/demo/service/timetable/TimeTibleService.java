@@ -12,4 +12,6 @@ public interface TimeTibleService {
     public TimeTable getDateReg(int id);
 
     public void deleteDateReg(int id);
+
+    public TimeTable getTableService(String string);
 }

@@ -38,4 +38,10 @@ public class TimeTableServiceImpl implements TimeTibleService {
         dateRegDaO.delete(id);
     }
 
+    @Override
+    @Transactional
+    public TimeTable getTableService(String string) {
+        return dateRegDaO.getTime(string);
+    }
+
 }

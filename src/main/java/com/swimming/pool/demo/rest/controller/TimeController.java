@@ -1,18 +1,15 @@
 package com.swimming.pool.demo.rest.controller;
 
+import com.swimming.pool.demo.entity.Client;
+import com.swimming.pool.demo.entity.Reserve;
 import com.swimming.pool.demo.entity.TimeTable;
+import com.swimming.pool.demo.service.client.ClientService;
 import com.swimming.pool.demo.service.timetable.TimeTibleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Locale;
-import java.util.logging.SimpleFormatter;
+import java.util.*;
 
 @RestController
 @RequestMapping("api/v0/pool/timetable")
@@ -21,11 +18,39 @@ public class TimeController {
     @Autowired
     TimeTibleService timeTableService;
 
+    @Autowired
+    ClientService clientService;
+
     @GetMapping("/all")
     public List<TimeTable> showAllTimeTable() {
         List<TimeTable> allTimeTable = timeTableService.getAllDateReg();
         return allTimeTable;
     }
+
+    @GetMapping("/all/{string}")
+    public TimeTable getAll(@PathVariable String string){
+        System.out.println("!!!"+string+"!!!");
+        List<TimeTable> timeTableList = timeTableService.getAllDateReg();
+        for (TimeTable t:timeTableList){
+            System.out.println(t.getTime().toString());
+            if (t.getTime().equals(string)){
+                return t;
+            }
+        }
+        return null;
+    }
+
+    @PostMapping("/reserve")
+    public TimeTable reserve (@RequestBody Reserve reserve) {
+     return null;
+    }
+
+    @GetMapping("/available")
+    public TimeTable getAvailable(){
+        return null;
+    }
+
+    @GetMapping("/cancel/{}")
 
     @RequestMapping("/")
     public void create() {

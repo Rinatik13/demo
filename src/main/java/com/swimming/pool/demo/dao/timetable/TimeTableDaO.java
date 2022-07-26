@@ -13,4 +13,5 @@ public interface TimeTableDaO {
 
     public void delete(int id);
 
+    public TimeTable getTime(String string);
 }
