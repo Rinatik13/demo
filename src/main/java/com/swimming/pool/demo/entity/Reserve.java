@@ -12,10 +12,12 @@ public class Reserve {
     private String orderId;
 
     @Column(name = "client_id")
-    int clientId;
+    private int clientId;
+
+    private String datetime;
 
     @Column(name = "date_time_id")
-    String datetime;
+    private int datetimeId;
 
     public Reserve() {
     }
@@ -42,5 +44,13 @@ public class Reserve {
 
     public void setDatetime(String datetime) {
         this.datetime = datetime;
+    }
+
+    public int getDatetimeId() {
+        return datetimeId;
+    }
+
+    public void setDatetimeId(int datetimeId) {
+        this.datetimeId = datetimeId;
     }
 }

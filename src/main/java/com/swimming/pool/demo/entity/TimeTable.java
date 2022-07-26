@@ -18,9 +18,9 @@ public class TimeTable {
     private int count;
 
     // создаём связь с клиентом, список клиентов зарегистрированных на эту дату.
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(name = "client_date",
-//    joinColumns = @JoinColumn(name = "date_id"),
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "reserve_table",
+//    joinColumns = @JoinColumn(name = "date_time_id"),
 //    inverseJoinColumns = @JoinColumn(name = "client_id"))
 //    private List<Client> clientList;
 

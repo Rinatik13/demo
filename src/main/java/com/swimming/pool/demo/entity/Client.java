@@ -26,10 +26,10 @@ public class Client {
     private String email;
 
     // создаём связь с датами
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(name = "client_date",
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "reserve_table",
 //            joinColumns = @JoinColumn(name = "client_id"),
-//            inverseJoinColumns = @JoinColumn(name = "date_id"))
+//            inverseJoinColumns = @JoinColumn(name = "date_time_id"))
 //    private List<TimeTable> dateList;
 
     public Client() {

@@ -4,6 +4,7 @@ import com.swimming.pool.demo.entity.Client;
 import com.swimming.pool.demo.entity.Reserve;
 import com.swimming.pool.demo.entity.TimeTable;
 import com.swimming.pool.demo.service.client.ClientService;
+import com.swimming.pool.demo.service.reserve.ReserveService;
 import com.swimming.pool.demo.service.timetable.TimeTibleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,9 @@ public class TimeController {
     @Autowired
     ClientService clientService;
 
+    @Autowired
+    ReserveService reserveService;
+
     @GetMapping("/all")
     public List<TimeTable> showAllTimeTable() {
         List<TimeTable> allTimeTable = timeTableService.getAllDateReg();
@@ -29,7 +33,6 @@ public class TimeController {
 
     @GetMapping("/all/{string}")
     public TimeTable getAll(@PathVariable String string){
-        System.out.println("!!!"+string+"!!!");
         List<TimeTable> timeTableList = timeTableService.getAllDateReg();
         for (TimeTable t:timeTableList){
             System.out.println(t.getTime().toString());
@@ -40,8 +43,17 @@ public class TimeController {
         return null;
     }
 
+
     @PostMapping("/reserve")
-    public TimeTable reserve (@RequestBody Reserve reserve) {
+    public Reserve reserve (@RequestBody Reserve reserve) {
+        Client client = clientService.getClient(reserve.getClientId());
+        TimeTable timeTable = timeTableService.getTableService(reserve.getDatetime());
+        if (timeTable.getCount()<10){
+            if (client!=null){
+                reserveService.reserve(reserve);
+                return reserve;
+            }
+        }
      return null;
     }
 
