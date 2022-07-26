@@ -36,7 +36,7 @@ public class DemoConfiguration {
     public LocalSessionFactoryBean sessionFactory (){
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.swimming.pool.demo");
+        sessionFactory.setPackagesToScan("com.swimming.pool.demo.entity");
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         hibernateProperties.setProperty("hibernate.show_sql","true");

@@ -19,8 +19,8 @@ public class ClientController {
 
     @GetMapping("/all")
     public List<Client> showAllClient(){
-        List<Client> allClient = clientService.getAllClients();
-        return allClient;
+        return clientService.getAllClients();
+
     }
 
     @GetMapping("/get/{id}")

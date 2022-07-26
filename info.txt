@@ -20,3 +20,13 @@
 
 Будние дни с 8.00 - 21.00
 Праздничные дни с 8.00 - 13.00
+
+1) GET /api/v0/pool/client/all (получаем список клиентов бассейна) работает
+2) GET /api/v0/pool/client/get (получаем данные о клиенте) работает
+3) POST /api/v0/pool/client/add (добавляем нового клиента) работает
+4) POST /api/v0/pool/client/update (обновление данных о клиенте) работает
+
+5) GET /api/v0/pool/timetable/all (получение данных на определённую дату, String в теле)
+6) GET /api/v0/pool/timetable/available (получение доступных записей на определённую дату
+7) POST /api/v0/pool/timetable/reserve (добавляем запись клиента на определённое время)
+8) GET /api/v0/pool/timetable/cancel (отмена записи на определённое время)

@@ -18,10 +18,9 @@ public class ClientDaOImpl implements ClientDaO{
     @Override
     public List<Client> getAllClients() {
         Session session = sessionFactory.getCurrentSession();
-        List<Client> allClient = session.createQuery("from Client",
-                Client.class)
-                .getResultList();
-        return allClient;
+        List<Client> clientList = session.createQuery("from Client",
+                Client.class).getResultList();
+        return clientList;
     }
 
     @Override
@@ -33,8 +32,8 @@ public class ClientDaOImpl implements ClientDaO{
     @Override
     public Client getClient(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Client client =  session.get(Client.class, id);
-        return client;
+        return session.get(Client.class, id);
+
     }
 
     @Override
