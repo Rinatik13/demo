@@ -16,9 +16,6 @@ public class Reserve {
 
     private String datetime;
 
-    @Column(name = "date_time_id")
-    private int datetimeId;
-
     public Reserve() {
     }
 
@@ -46,11 +43,4 @@ public class Reserve {
         this.datetime = datetime;
     }
 
-    public int getDatetimeId() {
-        return datetimeId;
-    }
-
-    public void setDatetimeId(int datetimeId) {
-        this.datetimeId = datetimeId;
-    }
 }

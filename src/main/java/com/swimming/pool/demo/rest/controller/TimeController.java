@@ -50,6 +50,8 @@ public class TimeController {
         TimeTable timeTable = timeTableService.getTableService(reserve.getDatetime());
         if (timeTable.getCount()<10){
             if (client!=null){
+                timeTable.setCount(timeTable.getCount()+1);
+                timeTableService.saveDateReg(timeTable);
                 reserveService.reserve(reserve);
                 return reserve;
             }
@@ -57,12 +59,24 @@ public class TimeController {
      return null;
     }
 
-    @GetMapping("/available")
-    public TimeTable getAvailable(){
-        return null;
+    @GetMapping("/available/{date}")
+    public TimeTable getAvailable(@PathVariable String date){
+        TimeTable timeTable = timeTableService.getTableService(date);
+        return timeTable;
     }
 
-    @GetMapping("/cancel/{}")
+    @PostMapping("/cancel")
+    public void cancel(@RequestBody Reserve reserve){
+        Reserve reserve1 = reserveService.getReserve(reserve);
+        TimeTable timeTable = timeTableService.getTableService(reserve1.getDatetime());
+        if (timeTable.getCount()>0){
+        timeTable.setCount(timeTable.getCount()-1);
+        reserveService.cancel(reserve1);
+        timeTableService.saveDateReg(timeTable);
+        System.out.println("done!");
+        }
+        System.out.println("not done!");
+    }
 
     @RequestMapping("/")
     public void create() {

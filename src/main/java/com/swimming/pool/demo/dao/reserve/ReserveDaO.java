@@ -6,4 +6,8 @@ import com.swimming.pool.demo.entity.TimeTable;
 
 public interface ReserveDaO {
     public void reserve(Reserve reserve);
+
+    public void cancel(Reserve reserve);
+
+    public Reserve getReserve(Reserve reserve);
 }

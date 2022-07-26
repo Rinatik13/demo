@@ -26,7 +26,7 @@
 3) POST /api/v0/pool/client/add (добавляем нового клиента) работает
 4) POST /api/v0/pool/client/update (обновление данных о клиенте) работает
 
-5) GET /api/v0/pool/timetable/all (получение данных на определённую дату, String в теле)
-6) GET /api/v0/pool/timetable/available (получение доступных записей на определённую дату
-7) POST /api/v0/pool/timetable/reserve (добавляем запись клиента на определённое время)
-8) GET /api/v0/pool/timetable/cancel (отмена записи на определённое время)
+5) GET /api/v0/pool/timetable/all (получение данных на определённую дату, String в теле) (работает)
+6) GET /api/v0/pool/timetable/available (получение доступных записей на определённую дату (работает)
+7) POST /api/v0/pool/timetable/reserve (добавляем запись клиента на определённое время) (работает)
+8) GET /api/v0/pool/timetable/cancel (отмена записи на определённое время) (работает)
