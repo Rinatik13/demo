@@ -17,7 +17,8 @@ public class ClientServiceImpl implements ClientService{
     @Override
     @Transactional
     public List<Client> getAllClients() {
-        return clientDaO.getAllClients();
+        List<Client> clientList = clientDaO.getAllClients();
+        return clientList;
     }
 
     @Override

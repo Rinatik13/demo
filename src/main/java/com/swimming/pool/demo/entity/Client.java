@@ -2,6 +2,7 @@ package com.swimming.pool.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 // POJO класс по клиенту
 @Entity
 @Table(name = "client_table")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@Component
 public class Client {
     // ид клиента
     @Id
